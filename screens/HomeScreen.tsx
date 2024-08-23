@@ -13,20 +13,25 @@ const HomeScreen = ({ navigation }: {
   <View flex={1}>
    <SafeAreaView style={{ flex: 1 }}>
     <ScrollView f={1}>
-     <XStack justifyContent="center" alignItems="center">
+     <XStack justifyContent="center" paddingHorizontal='unset' marginInline='unset' alignItems="center" borderColor='$colors.primary' marginHorizontal='$6' borderRadius='$4' borderWidth='$1'>
       <Input
-       size="$4"
+       // size="$4"
        bg='$colorTransparent'
        shadowColor="$shadowColor"
        shadowOpacity={50}
        shadowRadius={"$17"}
-       margin='$2'
+       // margin='$2'
        w={'$20'}
+       paddingLeft='$3'
        shadowOffset={{ height: 20, width: 60 }}
        placeholder={`search products`}
        autoComplete="address-line1"
-      />
-      <Search size={24} color="white" style={{ backgroundColor: '#05a845', padding: 15, }} />
+       unstyled
+      >
+      </Input>
+      <View bg='$colors.primary' borderRadius='$4' padding='$2'>
+      <Search size={34} color="white"  />
+      </View>
      </XStack>
      <YStack gap="$4" margin='$2'>
       <XStack ai="center" gap="$4">

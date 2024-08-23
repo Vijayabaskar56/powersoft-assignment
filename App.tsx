@@ -38,9 +38,13 @@ function App(): React.JSX.Element {
           <StatusBar
             barStyle="default" translucent={true}
           />
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{
+            headerShown: false,
+          }}>
             {isLoggedIn ? (
-              <Stack.Group>
+              <Stack.Group screenOptions={{
+                headerShown: false,
+              }}>
                 <Stack.Screen name="Home" component={RootScreen} />
               </Stack.Group>
             ) : (
