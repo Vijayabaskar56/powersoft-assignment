@@ -9,14 +9,18 @@ import CartScreenLayout from './CartScreenLayout';
 import FaviroutScreenLayout from './Favirouts';
 import SearchScreenLayout from './SearchScreen';
 import { useNavigationState } from '@react-navigation/native';
+import { getActiveRouteName } from '../utils/utils';
 
 const Tab = createBottomTabNavigator();
 
+
+
 const RootScreen = () => {
-  const routeName = useNavigationState(state => {
-    const route = state.routes[state.index];
-    return route.name;
-  });
+  const navigationState = useNavigationState(state => state);
+  const currentRouteName = getActiveRouteName(navigationState);
+  console.log(currentRouteName);
+
+
 
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
@@ -24,10 +28,9 @@ const RootScreen = () => {
       headerShown: true,
       tabBarVisibilityAnimationConfig: {
         show: {
-          animation: 'spring',
+          animation: 'timing',
           config: {
-            delay: 100,
-            isInteraction: true,
+            duration: 200,
           },
         },
         hide: {
@@ -47,7 +50,7 @@ const RootScreen = () => {
         overflow: 'hidden',
         shadowColor: '#000',
         borderRadius: 20,
-        display: route.name === 'Detail' ? 'none' : 'flex',
+        display: route.name === 'CartLayout' ? 'none' : 'flex',
         shadowOffset: {
           width: 0,
           height: 2,

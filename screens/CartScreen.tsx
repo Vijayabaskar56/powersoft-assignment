@@ -13,18 +13,26 @@ const CartScreen = ({ navigation }: {
  let cartList: any[] = [];
  let savedCartItem = CartStore.getAllKeys()
 
-
-
-
  savedCartItem.map(async (id) => {
   if (typeof id !== "number") {
    cartList.push(JSON.parse(CartStore.getString(id) as string));
   }
  })
 
+ useEffect(() => {
+  CartStore.getAllKeys().map(async (id) => {
+   if (typeof id !== "number") {
+    savedCartItem.push(JSON.parse(CartStore.getString(id) as string));
+   }
+  })
+ }, [cart])
+
+ console.log(cartList, 'cartList', cart);
+
+
 
  return (
-  <View f={1}>
+  <View f={1} mb='$2'>
    <FlatList
     data={cartList}
     keyExtractor={(item, index) => index.toString()}

@@ -12,6 +12,8 @@ const SearchBar = ({isExplore} : {
     paddingHorizontal='$3'
     placeholder='Search products'
     unstyled
+    color='$gray11Light'
+    placeholderTextColor='$gray11Light'
     w='100%'
    ></InputFrame>
    <View bg='$colors.primary' p='$2'  borderTopEndRadius='$4' borderBottomEndRadius={'$4'} >

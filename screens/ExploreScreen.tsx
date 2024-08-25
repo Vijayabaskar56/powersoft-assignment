@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowLeft, ArrowRight, BellDot, Car, ChevronsUpDown, Heart, LayoutGridIcon, Search, ShoppingCart, Star } from 'lucide-react-native';
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { Button, Card, Image, Input, InputFrame, Paragraph, ScrollView, Text, View, XStack, YStack, ZStack } from 'tamagui';
 import { Product } from '../public/data';
 import CardStack from '../component/CardStack';
@@ -28,6 +28,16 @@ const ExploreScreen = ({ navigation }: {
         </XStack>
           <FlatList
             data={Product}
+            ListEmptyComponent={() => (
+              <View f={1} ai='center' h='$20' jc='flex-end' gap='$3'>
+               <LayoutGridIcon size={100} color='#05A845' />
+               <Text fontSize='$5' fontWeight='bold' color='black'>Your Cart Look's Empty!!</Text>
+               <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Text color='$black1' textDecorationLine='underline'>Continure Shopping</Text>
+               </TouchableOpacity>
+              </View>
+             )
+             }
             style={{
               paddingHorizontal: 3,
               marginVertical: 6,

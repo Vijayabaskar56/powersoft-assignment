@@ -33,22 +33,22 @@ const CardStack = ({
      </View>
      <XStack mt='$3' justifyContent='space-between'>
       <Paragraph theme="alt2" fontSize='$5' fontWeight='bold' color='$black1'>{product?.name}</Paragraph>
-      <Paragraph theme="alt2" fontSize='$2' fontWeight='bold' color='$colors.primary'>{`RS ${product.price ?? 0}`}</Paragraph>
+      <Paragraph theme="alt2" fontSize='$2' fontWeight='bold' color='$colors.primary'>{`RS ${product?.price ?? 0}`}</Paragraph>
      </XStack>
      <XStack flex={1} justifyContent='space-between' ai='flex-end'>
       <XStack ai='flex-start' gap='$2'>
        <YStack ai='flex-start'>
-        <Paragraph theme="alt2" fontSize='$3' color="$black1">{product.quantity}</Paragraph>
+        <Paragraph theme="alt2" fontSize='$3' color="$black1">{product?.quantity}</Paragraph>
         <Paragraph theme="alt2" fontSize='$2' >Quantity</Paragraph>
        </YStack>
        <YStack ai='flex-start' jc='flex-start'>
         <XStack ai='center' jc='flex-start'>
          <Star size={12} color="gold" fill='gold' />
-         <Paragraph theme="alt2" fontSize='$3' color='$black1'>{product.rating}</Paragraph>
+         <Paragraph theme="alt2" fontSize='$3' color='$black1'>{product?.rating}</Paragraph>
         </XStack>
         <XStack ai='center' jc='flex-start'>
          <ChevronsUpDown size={12} color="#05A845" />
-         <Paragraph theme="alt2" fontSize='$2' color='$accentBackground'>{product.quality}</Paragraph>
+         <Paragraph theme="alt2" fontSize='$2' color='$accentBackground'>{product?.quality}</Paragraph>
         </XStack>
        </YStack>
       </XStack>

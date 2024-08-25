@@ -44,7 +44,7 @@ const CartCard = ({ item, index, type }: {
     <XStack>
      <XStack borderRadius='$10' fd='row' gap='$3' pl='$4' ai='center'>
       <H4 color='$black1'>{index + 1}</H4>
-      <Image src={item?.imageUrl} width={60} borderRadius='$5' height={60} />
+      <Image src={item?.imageUrl ?? require('../public/placeholder.jpg')} width={60} borderRadius='$5' height={60} />
      </XStack>
      <YStack pl='$5'>
       <XStack gap='$3'>

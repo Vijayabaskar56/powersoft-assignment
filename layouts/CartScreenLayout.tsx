@@ -4,13 +4,18 @@ import CartScreen from '../screens/CartScreen';
 import OrderComplete from '../screens/OrderComplete';
 import CheckoutScreen from '../screens/CheckoutScreen';
 import { Text, View } from 'tamagui';
-import { Trash2 } from 'lucide-react-native';
+import { ArrowLeft, Trash2 } from 'lucide-react-native';
 import { CartStore, useCartContext } from '../state/appState';
 import { TouchableOpacity } from 'react-native';
+import { NavigationProp } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
-const CartScreenLayout = () => {
+const CartScreenLayout = ({
+ navigation,
+}: {
+ navigation: NavigationProp<any>;
+}) => {
  const { setCart } = useCartContext();
  const emptycart = () => {
   setCart([])
@@ -34,6 +39,11 @@ const CartScreenLayout = () => {
         size={24}
         color={'#05A845'}
        />
+      </TouchableOpacity>
+     ),
+     headerLeft: () => (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+       <ArrowLeft size={24} color={'#05A845'} />
       </TouchableOpacity>
      ),
     }} />

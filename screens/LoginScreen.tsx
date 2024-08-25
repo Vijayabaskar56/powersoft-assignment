@@ -62,7 +62,7 @@ const LoginScreen = ({ navigation }: {
 
  const handleSocialLogin = () => {
   setSession({
-   id: Math.random(),
+   id: Math.random() * 10,
   });
   SessionStore.set(`${session?.id}`, JSON.stringify(session));
  }

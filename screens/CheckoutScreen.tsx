@@ -2,10 +2,11 @@
 import { useEffect, useState } from 'react';
 import { Button, H4, Image, Input, Paragraph, Separator, Sheet, Square, Text, View, XStack, YStack, } from 'tamagui';
 import { CartStore, useCartContext } from '../state/appState';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import CartCard from '../component/CartCard';
 import { NavigationProp } from '@react-navigation/native';
 import { usePriceContext } from '../state/priceState';
+import { LucideShoppingCart } from 'lucide-react-native';
 
 
 const CheckoutScreen = ({
@@ -34,14 +35,18 @@ const CheckoutScreen = ({
  const estimatedTax = subTotal * 2.9 / 100;
  const total = subTotal + shippingCost + estimatedTax;
  return (
-  <View f={1} bg='white'>
+  <View f={1} bg='white' mb='$2'>
    <View f={0.6} jc='center'>
     <FlatList
      data={cartList}
      keyExtractor={(item, index) => index.toString()}
      ListEmptyComponent={() => (
-      <View f={1} ai='center' jc='center'>
-       <Text fontSize='$5' fontWeight='bold'>Cart is Empty</Text>
+      <View f={1} ai='center' h='$20' jc='flex-end' gap='$3'>
+       <LucideShoppingCart size={100} color='#05A845' />
+       <Text fontSize='$5' fontWeight='bold' color='black'>Your Cart Look's Empty!!</Text>
+       <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text color='$black1' textDecorationLine='underline'>Continure Shopping</Text>
+       </TouchableOpacity>
       </View>
      )
      }

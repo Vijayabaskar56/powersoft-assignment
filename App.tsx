@@ -20,11 +20,13 @@ import AppLayout from './layouts/AppLayout';
 import { FaviProvider } from './state/faviroutesState';
 import { PriceProvider } from './state/priceState';
 import { SessionProvider, useSession } from './state/sessionState';
+import { LogBox } from 'react-native';
+
 
 
 function App(): React.JSX.Element {
   const colorScheme = useColorScheme() ?? 'light';
-
+  LogBox.ignoreAllLogs();
   return (
     <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>

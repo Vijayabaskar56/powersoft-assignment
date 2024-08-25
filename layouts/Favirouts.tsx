@@ -9,7 +9,7 @@ import { storage, useFavi } from '../state/faviroutesState';
 const Stack = createNativeStackNavigator();
 
 const FaviroutScreenLayout = () => {
- const { setBookmark ,session } = useFavi();
+ const { setBookmark, session } = useFavi();
 
  const emptyFave = () => {
   setBookmark([])

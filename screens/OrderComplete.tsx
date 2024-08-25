@@ -16,7 +16,7 @@ const OrderComplete = ({ navigation }: {
   }
 
   return (
-    <View f={1} bg='$white1'>
+    <View f={1} bg='$white1' mb='$2'>
       <YStack f={3} opacity={50} jc="center" ai="center" gap="$2">
         <Image src={require('../public/logoGreen.png')} width={60} height={60} />
         <Text color='$colors.primary'>EatGreen</Text>
