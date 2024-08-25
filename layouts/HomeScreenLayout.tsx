@@ -2,8 +2,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import RootScreen from './RootLayout';
 import HomeScreen from '../screens/HomeScreen';
-import { Bell, BellDot, UserCircle2 } from 'lucide-react-native';
-import { Text, View } from 'tamagui';
+import { Bell, BellDot, MapPin, UserCircle2 } from 'lucide-react-native';
+import { Text, View, XStack, YStack } from 'tamagui';
 import { NavigationProp } from '@react-navigation/native';
 // import { Avatar } from 'tamagui';
 
@@ -17,15 +17,18 @@ const HomeScreenLayout = ({
   return (
     <Stack.Navigator>
       <Stack.Group screenOptions={{
-        // headerShown: false,
+        headerShown: true,
       }}>
         <Stack.Screen name="Home" component={HomeScreen} options={{
-          // headerShown: false,
+          headerShown: true,
           headerTitle: () => (
-            <View>
-              <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black' }}>Home</Text>
-              <Text style={{ fontSize: 12, color: 'gray' }}>Some additional text</Text>
-            </View>
+            <YStack gap='$1'>
+              <Text fontWeight='bold' fontSize='$8' color='black'>Home</Text>
+              <XStack gap='$2' ai='center'>
+                <MapPin size={20} color='gold' />
+                <Text fontSize='$4' color='gray'>Peelamedu</Text>
+              </XStack>
+            </YStack>
           ),
           headerRight: () => (
             <View f={0} flexDirection='row' ai='center' gap='$4'>

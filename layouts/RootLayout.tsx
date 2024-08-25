@@ -1,22 +1,27 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Bell, Heart, Home, LayoutGrid, Search, ShoppingCart } from 'lucide-react-native';
-import HomeScreen from '../screens/HomeScreen';
-import FavoritesScreen from '../screens/FaviroutsScreen';
-import CartScreen from '../screens/CartScreen';
-import SearchScreen from '../screens/SearchScreen';
-import { Button, View } from 'tamagui';
-import ExploreScreen from '../screens/ExploreScreen';
+import { Heart, Home, LayoutGrid, Search, ShoppingCart, UserCircle2 } from 'lucide-react-native';
+import { View } from 'tamagui';
 import HomeScreenLayout from './HomeScreenLayout';
+import ExploreScreenLayout from './ExploreScreenLayout';
+import CartScreenLayout from './CartScreenLayout';
+import FaviroutScreenLayout from './Favirouts';
+import SearchScreenLayout from './SearchScreen';
+import { useNavigationState } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const RootScreen = () => {
+  const routeName = useNavigationState(state => {
+    const route = state.routes[state.index];
+    return route.name;
+  });
+
   return (
-    <Tab.Navigator screenOptions={{
+    <Tab.Navigator screenOptions={({ route }) => ({
       tabBarActiveTintColor: '#FBBC05',
-      headerShown: false,
+      headerShown: true,
       tabBarVisibilityAnimationConfig: {
         show: {
           animation: 'spring',
@@ -42,6 +47,7 @@ const RootScreen = () => {
         overflow: 'hidden',
         shadowColor: '#000',
         borderRadius: 20,
+        display: route.name === 'Detail' ? 'none' : 'flex',
         shadowOffset: {
           width: 0,
           height: 2,
@@ -64,14 +70,16 @@ const RootScreen = () => {
         fontWeight: '500',
         backgroundColor: 'transparent',
       },
-    }}>
-      <Tab.Screen name="Home" component={HomeScreenLayout} options={{
+    })}>
+      <Tab.Screen name="HomeLayout" component={HomeScreenLayout} options={{
         title: 'Homee',
+        headerShown: false,
         tabBarIcon: ({ color }) => <Home size={24} color={color} />,
       }}
       />
-      <Tab.Screen name="Explore" component={ExploreScreen} options={{
-        title: 'Explore',
+      <Tab.Screen name="ExploreLayout" component={ExploreScreenLayout} options={{
+        title: 'Trending Deals',
+        headerShown: false,
         tabBarIcon: ({ color }) => (
           <LayoutGrid
             size={24}
@@ -79,8 +87,9 @@ const RootScreen = () => {
           />
         ),
       }} />
-      <Tab.Screen name="Cart" component={CartScreen} options={{
+      <Tab.Screen name="CartLayout" component={CartScreenLayout} options={{
         title: 'Cart',
+        headerShown: false,
         tabBarIcon: () => (
           <View bg="white" p="$3" br="$9">
             <ShoppingCart
@@ -90,8 +99,9 @@ const RootScreen = () => {
           </View>
         ),
       }} />
-      <Tab.Screen name="Faviouts" component={FavoritesScreen} options={{
+      <Tab.Screen name="FavioutsLayout" component={FaviroutScreenLayout} options={{
         title: 'Faviouts',
+        headerShown: false,
         tabBarIcon: ({ color }) => (
           <Heart
             size={24}
@@ -99,10 +109,11 @@ const RootScreen = () => {
           />
         ),
       }} />
-      <Tab.Screen name="Search" component={SearchScreen} options={{
+      <Tab.Screen name="SearchLayout" component={SearchScreenLayout} options={{
         title: 'Search',
+        headerShown: false,
         tabBarIcon: ({ color }) => (
-          <Search
+          <UserCircle2
             size={24}
             color={color}
           />

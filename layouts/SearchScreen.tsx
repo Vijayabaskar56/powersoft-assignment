@@ -7,8 +7,12 @@ const Stack = createNativeStackNavigator();
 const SearchScreenLayout = () => {
  return (
   <Stack.Navigator>
-   <Stack.Group>
-    <Stack.Screen name="Search" component={SearchScreen} />
+   <Stack.Group screenOptions={{
+    headerShown: false,
+   }}>
+    <Stack.Screen name="Search" component={SearchScreen} options={{
+
+    }} />
    </Stack.Group>
   </Stack.Navigator>
  )
